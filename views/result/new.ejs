@@ -1,0 +1,55 @@
+
+<div class="container">
+  <h2>Add Race Result</h2>
+  <div class="row">
+    <form method="POST" action="/addnew">
+      <div class="form-group">
+        <label for="nameEvent">Event Name</label>
+        <input type="text" class="form-control" name="nameEvent" id="nameEvent" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="disciplines">Discipline</label>
+        <input type="text" class="form-control" name="disciplines" id="disciplines" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" class="form-control" name="location" id="location" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="dateEvent">Date</label>
+        <input type="text" class="form-control" name="nameEvent" id="nameEvent" placeholder="">
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" name="category" id="category">
+          <option>Ladies</option>
+          <option>Men</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select class="form-control" name="country" id="country">
+          <option>Austria</option>
+          <option>Germrany</option>
+          <option>Italy</option>
+          <option>Norway</option>
+          <option>Switzerland</option>
+          <option>Greece</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="firstPlace">First Place</label>
+        <input type="text" class="form-control" name="firstPlace" id="firstPlace" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="secondPlace">Second Place</label>
+        <input type="text" class="form-control" name="secondPlace" id="secondPlace" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="thirdPlace">Third Place</label>
+        <input type="text" class="form-control" name="thirdPlace" id="thirdPlace" placeholder="Enter name">
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+  </div>
+</div>
