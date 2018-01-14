@@ -1,0 +1,50 @@
+
+
+<div class="container">
+  <h2>Add Team Members</h2>
+  <div class="row">
+    <div class="col-6">
+      <form method="POST" action="/addnew">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="" id="name" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+        <label for="image">Upload profile photo</label>
+        <input type="file" class="form-control-file" name="image" id="image">
+      </div>
+        <div class="form-group">
+          <label for="fisRank">FIS Rank</label>
+          <input type="text" class="form-control" name="fisRank" id="fisRank" placeholder="Enter latest FIS Ranking">
+        </div>
+        <div class="form-group">
+          <label for="category">Select Category</label>
+          <select class="form-control" name="category" id="category">
+            <option>Ladies</option>
+            <option>Men</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select class="form-control" name="country" id="country">
+            <option>Austria</option>
+            <option>Germrany</option>
+            <option>Italy</option>
+            <option>Norway</option>
+            <option>Switzerland</option>
+            <option>Greece</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sponsors">Sponsors</label>
+          <textarea class="form-control" name="sponsors" id="sponsors" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
+    </div>
+    <div class="col-6">
+
+    </div>
+  </div>
+</div>
