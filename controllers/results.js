@@ -2,14 +2,14 @@
 // const User = require('../models/user');
 // const Racer = require('../models/racer');
 // const Event = require('../models/event');
-// const Results = require('../models/result');
+const Results = require('../models/result');
 // const Team = require('../models/team');
-const News = require('../models/news');
+// const News = require('../models/news');
 
 
 
-function newsRoute(req, res){
-  res.render('statics/news');
+function resultRoute(req, res){
+  res.render('statics/results');
 }
 
 
@@ -18,7 +18,7 @@ module.exports = {
   // user: userRoute,
   // racer: racerRoute,
   // team: teamRoute,
-  news: newsRoute
-  // result: resultRoute,
+  // event: eventRoute,
+  result: resultRoute
   // news: newsRoute,
 };

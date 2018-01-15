@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-const databaseURI = 'mongodb://localhost/seeding-data';
-mongoose.connect(databaseURI);
+const env = process.env.NODE_ENV || 'development';
+const dbURI = process.env.MONGODB_URI || `mongodb://localhost/project2-${env}`;
+mongoose.connect(dbURI);
 
 const Racer = require('../models/racer');
-const User = require('../models/user');
-const Team = require('../models/team');
-const Event = require('../models/event');
-const Result = require('../models/results');
-const Result = require('../models/results');
+// const User = require('../models/user');
+// const Team = require('../models/team');
+// const Event = require('../models/event');
+// const Result = require('../models/results');
+// const News = require('../models/news');
 
 Racer.collection.drop();
 
