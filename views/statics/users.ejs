@@ -39,7 +39,11 @@
                 <td><%= user.country %></td>
                 <td><%= user.email %></td>
                 <td><a href="/users/<%= user.name %>/edit">Update</a></td>
-                <td><a href="/users/<%= user.name %>/delete">Delete</a></td>
+                <td>
+                <form method="POST" action="/users/<%= user.id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button>Delete</button>
+                </form></td>
 
                 </tr>
                 <% }) %>

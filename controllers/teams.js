@@ -21,6 +21,12 @@ function teamsRoute(req, res){
     });
 }
 
+function newRoute(req, res) {
+  Team
+    .find()
+    .exec()
+    .then((team) =>  res.render('team/new', { team }));
+}
 function teamRoute(req, res) {
   Team
     .findOne({name: req.params.name})
@@ -34,20 +40,15 @@ function teamRoute(req, res) {
     });
 }
 
-function newRoute(req, res) {
-  Team
-    .find()
-    .exec()
-    .then((team) =>  res.render('team/new', { team }));
-}
+
 
 // create new record
 function createRoute(req, res){
   Team
     .create(req.body)
     .then((team) => {
-      req.flash('info', `Thanks for registering, ${team.username}! Please login to manage team-${team.country}.` );
-      res.redirect('statics/teams');
+      // req.flash('info', `Thanks for registering, ${team.username}! Please login to manage team-${team.country}.` );
+      res.redirect('/teams');
       // res.redirect('/login');
     })
     .catch((err) => {
@@ -84,7 +85,8 @@ function teamUpdate(req, res) {
       return team.save();
     })
     .then((team) => {
-      res.redirect(`statics/teams/${team.name}`);
+      res.redirect('/teams');
+      // res.redirect(`/teams/${team.name}`);
     })
     .catch((err) => {
       res.status(500).render('error', { err });
@@ -100,7 +102,7 @@ function teamDelete(req, res) {
       return team.remove();
     })
     .then(() => {
-      res.redirect('statics/teams');
+      res.redirect('/teams');
     })
     .catch((err) => {
       res.status(500).render('error', { err });

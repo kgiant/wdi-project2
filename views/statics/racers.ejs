@@ -45,9 +45,10 @@
                 <td><a href="/racers/<%= racer.name %>/edit">Update</a></td>
                 <td>
                 <form method="POST" action="/racers/<%= racer.id %>">
-                    <input type="hidden" name="_method" value="DELETE">
-                      <button>Delete</button>
-                </form></td>
+                <input type="hidden" name="_method" value="DELETE">
+                <button>Delete</button>
+                </form>
+                </td>
                 </tr>
                 <% }) %>
               </tbody>

@@ -22,10 +22,10 @@ function racersRoute(req, res){
 
 // show registration form
 function newRoute(req, res) {
-  Team
+  Racer
     .find()
     .exec()
-    .then((teams) =>  res.render('racer/new', { teams }));
+    .then((racer) =>  res.render('racer/new', { racer }));
 }
 
 // show indivdual racer profile
@@ -99,7 +99,6 @@ function racerDelete(req, res) {
     .exec()
     .then((racer) => {
       if(!racer) return res.status(404).send('Not found');
-
       return racer.remove();
     })
     .then(() => {

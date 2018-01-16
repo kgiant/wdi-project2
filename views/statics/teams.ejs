@@ -36,7 +36,12 @@
                 <td><%= team.collection.length %></td>
                 <td></td>
                 <td><a href="/teams/<%= team.name %>/edit">Update</a></td>
-                <td><a href="/teams/<%= team.name %>/delete">Delete</a></td>
+                <td>
+                <form method="POST" action="/teams/<%= team.id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button>Delete</button>
+                </form>
+                </td>
                 </tr>
                 <% }) %>
 

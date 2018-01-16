@@ -25,6 +25,7 @@ function usersRoute(req, res){
     });
 }
 
+// show user profile - NOT used for now
 function userRoute(req, res) {
   User
     .findOne({name: req.params.name})
@@ -51,8 +52,8 @@ function createRoute(req, res){
   User
     .create(req.body)
     .then((user) => {
-      req.flash('info', `Thanks for registering, ${user.username}! Please login to manage team-${user.country}.` );
-      res.redirect('statics/users');
+      // req.flash('info', `Thanks for registering, ${user.username}! Please login to manage team-${user.country}.` );
+      res.redirect('/users');
       // res.redirect('/login');
     })
     .catch((err) => {
@@ -88,8 +89,8 @@ function userUpdate(req, res) {
 
       return user.save();
     })
-    .then((user) => {
-      res.redirect(`statics/users/${user.name}`);
+    .then(() => {
+      res.redirect('/users');
     })
     .catch((err) => {
       res.status(500).render('error', { err });
@@ -105,7 +106,7 @@ function userDelete(req, res) {
       return user.remove();
     })
     .then(() => {
-      res.redirect('statics/users');
+      res.redirect('/users');
     })
     .catch((err) => {
       res.status(500).render('error', { err });
