@@ -4,14 +4,14 @@
   <h2>Add Team Members</h2>
   <div class="row">
     <div class="col-6">
-      <form method="POST" action="/addnew">
+      <form method="POST" action="/racers">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" name="" id="name" placeholder="Enter name">
+          <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
         </div>
         <div class="form-group">
-        <label for="image">Upload profile photo</label>
-        <input type="file" class="form-control-file" name="image" id="image">
+        <label for="image">Upload link to photo</label>
+        <input type="text" class="form-control-file" name="image" id="image">
       </div>
         <div class="form-group">
           <label for="fisRank">FIS Rank</label>
@@ -35,14 +35,7 @@
             <option>Greece</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="country">Team</label>
-          <select class="form-control" name="team" id="team">
-            <% teams.forEach((team) => { %>
-              <option value="<%= team.id %>"><%= team.country %></option>
-            <% }) %>
-          </select>
-        </div>
+
         <div class="form-group">
           <label for="sponsors">Sponsors</label>
           <textarea class="form-control" name="sponsors" id="sponsors" rows="3"></textarea>

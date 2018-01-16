@@ -48,13 +48,13 @@ function createRoute(req, res){
   Racer
     .create(req.body)
     .then((racer) => {
-      req.flash('info', `Thanks for registering, ${racer.username}! Please login to manage team-${racer.country}.` );
-      res.redirect('statics/racers');
+      // req.flash('info', `Thanks for registering, ${racer.username}! Please login to manage team-${racer.country}.` );
+      res.redirect('/racers');
       // res.redirect('/login');
     })
     .catch((err) => {
       if(err.name ==='ValidationError'){
-        return res.status(400).render('registrations/new', {message: 'Passwords do not match'});
+        return res.status(400).render('racer/new', {message: 'Passwords do not match'});
       }
       res.status(500).end();
     });
@@ -86,7 +86,7 @@ function racerUpdate(req, res) {
       return racer.save();
     })
     .then((racer) => {
-      res.redirect(`statics/racers/${racer.name}`);
+      res.redirect(`/racers/${racer.name}`);
     })
     .catch((err) => {
       res.status(500).render('error', { err });
@@ -103,7 +103,7 @@ function racerDelete(req, res) {
       return racer.remove();
     })
     .then(() => {
-      res.redirect('statics/racers');
+      res.redirect('/racers');
     })
     .catch((err) => {
       res.status(500).render('error', { err });

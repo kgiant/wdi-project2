@@ -43,7 +43,11 @@
                 <td><%= racer.country %></td>
                 <td><%= racer.sponsors %></td>
                 <td><a href="/racers/<%= racer.name %>/edit">Update</a></td>
-                <td><a href="/racers/<%= racer.name %>/delete">Delete</a></td>
+                <td>
+                <form method="POST" action="/racers/<%= racer.id %>">
+                    <input type="hidden" name="_method" value="DELETE">
+                      <button>Delete</button>
+                </form></td>
                 </tr>
                 <% }) %>
               </tbody>

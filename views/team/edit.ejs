@@ -3,7 +3,8 @@
   <h2>Update Team Information</h2>
   <div class="row">
     <div class="col-6">
-      <form method="POST" action="/addnew">
+      <form method="POST" action="/teams/<%= team.id %>">
+        <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" name="" id="name" placeholder="" value="<%= team.name %>">
@@ -24,8 +25,8 @@
         <input type="text" class="form-control-file" name="email" id="email" value="<%= team.email %>">
       </div>
         <div class="form-group">
-        <label for="image">Upload flag photo</label>
-        <input type="file" class="form-control-file" name="image" id="image" value="<%= team.image %>">
+        <label for="image">Update link to flag photo</label>
+        <input type="text" class="form-control-file" name="image" id="image" value="<%= team.image %>">
       </div>
         <button type="submit" class="btn btn-primary">Update</button>
       </form>

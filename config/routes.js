@@ -35,14 +35,15 @@ router.route('/users')
   .post(user.create);
 router.route('/user/new')
   .get(user.new);
+router.route('/users/login')
+  .get(user.login);
 router.route('/users/:name')
   .get(user.user)
   .put(user.update)
   .delete(user.delete);
 router.route('/users/:name/edit')
   .get(user.edit);
-router.route('/login')
-  .get(user.login);
+
 
 router.route('/teams')
   .get(team.teams)
