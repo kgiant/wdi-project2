@@ -36,6 +36,14 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="country">Team</label>
+          <select class="form-control" name="team" id="team">
+            <% teams.forEach((team) => { %>
+              <option value="<%= team.id %>"><%= team.country %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="sponsors">Sponsors</label>
           <textarea class="form-control" name="sponsors" id="sponsors" rows="3"></textarea>
         </div>

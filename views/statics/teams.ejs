@@ -1,6 +1,7 @@
 <div class="container">
   <div class="">
     <h4>Team Directory</h4>
+    <a href="#">Add Team</a>
   </div>
   <div class="row">
     <div class="col-8">
@@ -15,41 +16,30 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <table class="table table-hover">
-            <thead>
+            <thead class="thead-light">
               <tr>
-                <th scope="col">Rank</th>
+                <th scope="col">Flag</th>
                 <th scope="col">Team</th>
+                <th scope="col">Country</th>
                 <th scope="col">Number of racers</th>
-                <th scope="col">Podium places</th>
-                <th scope="col">Racers</th>
                 <th scope="col">Manager</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Austria</td>
-                <td>8</td>
-                <td>12</td>
-                <td>Marcel Hirscher, Marcel Hirscher, Marcel Hirscher, Marcel Hirscher, Marcel Hirscher</td>
-                <td>mark@mdo.com</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-              </tr>
+              <% teams.forEach((team) =>{ %>
+                <tr>
+                <td><img height="30" width="30"  src="<%= team.image %>" alt="<%= team.name %>"></td>
+                <td><%= team.name %></td>
+                <td><%= team.country %></td>
+                <td><%= team.collection.length %></td>
+                <td></td>
+                <td><a href="/teams/<%= team.country %>/edit">Update</a></td>
+                <td><a href="/teams/<%= team.country %>/edit">Delete</a></td>
+                </tr>
+                <% }) %>
+
             </tbody>
           </table>
         </div>
@@ -62,18 +52,7 @@
       </div>
     </div>
     <div class="col-4">
-      <div class="card" style="width: 18rem;">
-        <div class="card-header">
-          <h4>Upcoming Events</h4>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-      </div>
+<%- include ../partials/_upcomingevents %>
     </div>
   </div>
 
