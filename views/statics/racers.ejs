@@ -1,7 +1,7 @@
 <div class="container">
   <div class="">
     <h4>Racer Directory</h4>
-    <a href="#">Add Racer</a>
+    <a href="/racer/new">Add Racer</a>
   </div>
   <div class="row">
     <div class="col-8">
@@ -43,7 +43,7 @@
                 <td><%= racer.country %></td>
                 <td><%= racer.sponsors %></td>
                 <td><a href="/racers/<%= racer.name %>/edit">Update</a></td>
-                <td><a href="/racers/<%= racer.name %>/edit">Delete</a></td>
+                <td><a href="/racers/<%= racer.name %>/delete">Delete</a></td>
                 </tr>
                 <% }) %>
               </tbody>
@@ -59,9 +59,7 @@
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <%- include ../partials/_upcomingevents %>
-      </div>
+
     </div>
 
     <div class="">

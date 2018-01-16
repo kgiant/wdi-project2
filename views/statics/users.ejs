@@ -1,7 +1,7 @@
 <div class="container">
   <div class="">
     <h4>User Directory</h4>
-    <a href="#">Add User</a>
+    <a href="/user/new">Add User</a>
   </div>
   <div class="row">
     <div class="col-8">
@@ -39,7 +39,7 @@
                 <td><%= user.country %></td>
                 <td><%= user.email %></td>
                 <td><a href="/users/<%= user.name %>/edit">Update</a></td>
-                <td><a href="/users/<%= user.name %>/edit">Delete</a></td>
+                <td><a href="/users/<%= user.name %>/delete">Delete</a></td>
 
                 </tr>
                 <% }) %>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="">
     <h4>Team Directory</h4>
-    <a href="#">Add Team</a>
+    <a href="team/new">Add Team</a>
   </div>
   <div class="row">
     <div class="col-8">
@@ -35,8 +35,8 @@
                 <td><%= team.country %></td>
                 <td><%= team.collection.length %></td>
                 <td></td>
-                <td><a href="/teams/<%= team.country %>/edit">Update</a></td>
-                <td><a href="/teams/<%= team.country %>/edit">Delete</a></td>
+                <td><a href="/teams/<%= team.name %>/edit">Update</a></td>
+                <td><a href="/teams/<%= team.name %>/delete">Delete</a></td>
                 </tr>
                 <% }) %>
 

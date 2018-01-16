@@ -1,0 +1,44 @@
+
+
+<div class="container">
+  <h2>Update User Information</h2>
+  <div class="row">
+    <div class="col-6">
+      <form method="POST" action="user/new">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="" id="name" placeholder="" value="<%= user.name %>">
+        </div>
+        <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control-file" name="email" id="email" value="<%= user.email %>">
+      </div>
+        <div class="form-group">
+        <label for="image">Upload profile photo</label>
+        <input type="file" class="form-control-file" name="image" id="image" value="<%= user.image %>">
+      </div>
+        <div class="form-group">
+        <label for="position">Position</label>
+        <input type="text" class="form-control-file" name="position" id="position" value="<%= user.position %>">
+      </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select class="form-control" name="country" id="country" value="<%= user.country %>">
+            <option>Austria</option>
+            <option>Germrany</option>
+            <option>Italy</option>
+            <option>Norway</option>
+            <option>Switzerland</option>
+            <option>Greece</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+
+    </div>
+    <div class="col-6">
+
+    </div>
+  </div>
+</div>

@@ -8,9 +8,9 @@ const User = require('../models/user');
 
 
 
-// function userRoute(req, res){
-//   res.render('statics/users');
-// }
+function loginRoute(req, res){
+  res.render('user/login');
+}
 
 function usersRoute(req, res){
   User
@@ -46,11 +46,82 @@ function newRoute(req, res) {
     .then((user) =>  res.render('user/new', { user }));
 }
 
+// create new record
+function createRoute(req, res){
+  User
+    .create(req.body)
+    .then((user) => {
+      req.flash('info', `Thanks for registering, ${user.username}! Please login to manage team-${user.country}.` );
+      res.redirect('statics/users');
+      // res.redirect('/login');
+    })
+    .catch((err) => {
+      if(err.name ==='ValidationError'){
+        return res.status(400).render('user/new', {message: 'Passwords do not match'});
+      }
+      res.status(500).end();
+    });
+}
+
+function editRoute(req, res) {
+  User
+    .findOne({name: req.params.name})
+    // .populate('team') // turn team id into team object with full details
+    .exec()
+    .then((user) => {
+      if(!user) return res.status(404).end();
+      res.render('user/edit', {user});
+    })
+    .catch(() => {
+      res.status(500).end();
+    });
+}
+
+function userUpdate(req, res) {
+  User
+    .findById(req.params.name)
+    .exec()
+    .then((user) => {
+      if(!user) return res.status(404).send('Not found');
+
+      user = Object.assign(user, req.body);
+
+      return user.save();
+    })
+    .then((user) => {
+      res.redirect(`statics/users/${user.name}`);
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
+
+function userDelete(req, res) {
+  User
+    .findById(req.params.name)
+    .exec()
+    .then((user) => {
+      if(!user) return res.status(404).send('Not found');
+      return user.remove();
+    })
+    .then(() => {
+      res.redirect('statics/users');
+    })
+    .catch((err) => {
+      res.status(500).render('error', { err });
+    });
+}
+
 module.exports = {
   // index: indexRoute,
   users: usersRoute,
   user: userRoute,
-  new: newRoute
+  new: newRoute,
+  create: createRoute,
+  edit: editRoute,
+  update: userUpdate,
+  delete: userDelete,
+  login: loginRoute
   // racer: racerRoute,
   // team: teamRoute,
   // event: eventRoute,

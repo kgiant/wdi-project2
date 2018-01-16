@@ -17,27 +17,53 @@ router.route('/events/:name').get(event.event);
 router.route('/event/new').get(event.new);
 
 // router.route('/event/create').get(event.create);
-router.route('/racers').get(racer.racers);
-router.route('/racers/:name').get(racer.racer);
-router.route('/racer/new').get(racer.new);
-router.route('/racer/edit').get(racer.create);
-
-router.route('/results').get(result.result);
-
-router.route('/teams').get(team.teams);
-router.route('/teams/:name').get(team.team);
-
-router.route('/users').get(user.users);
-router.route('/users/:name').get(user.user);
-router.route('/user/new').get(user.new);
+router.route('/racers')
+  .get(racer.racers)
+  .post(racer.create);
+router.route('/racer/new')
+  .get(racer.new);
+router.route('/racers/:name')
+  .get(racer.racer)
+  .put(racer.update)
+  .delete(racer.delete);
+router.route('/racers/:name/edit')
+  .get(racer.edit);
 
 
-router.route('/news').get(news.newss);
+router.route('/users')
+  .get(user.users)
+  .post(user.create);
+router.route('/user/new')
+  .get(user.new);
+router.route('/users/:name')
+  .get(user.user)
+  .put(user.update)
+  .delete(user.delete);
+router.route('/users/:name/edit')
+  .get(user.edit);
+router.route('/login')
+  .get(user.login);
+
+router.route('/teams')
+  .get(team.teams)
+  .post(team.create);
+router.route('/team/new')
+  .get(team.new);
+router.route('/teams/:name')
+  .get(team.team)
+  .put(team.update)
+  .delete(team.delete);
+router.route('/teams/:name/edit')
+  .get(team.edit);
+
+
+router.route('/news')
+  .get(news.newss)
+  .post(news.create);
 router.route('/news/:name').get(news.news);
 router.route('/news/new').get(news.new);
-router.route('/news/edit').get(news.create);
 
-
+router.route('/results').get(result.result);
 
 // router.get('/racers', (req, res) => res.render('statics/racers.ejs'));
 // router.get('/users', (req, res) => res.render('statics/users.ejs'));
