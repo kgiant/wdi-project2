@@ -14,12 +14,13 @@ const methodOverride = require('method-override');
 // initMap();
 //
 // function initMap() {
+//   const latLng = Geocoder.geocode(this.favoriteSpot);
 //   const latLng = { lat: 51.515213, lng: -0.072331 };
 //   map = new google.maps.Map($map.get(0), {
 //     zoom: 14,
 //     center: latLng
 //     // maptype
-//     // mapstyle
+//     // mapstyle: satellite/hybrid and terrain
 //   });
 // }
 

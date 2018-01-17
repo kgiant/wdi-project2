@@ -31,7 +31,7 @@
               <% teams.forEach((team) =>{ %>
                 <tr>
                 <td><img height="30" width="30"  src="<%= team.image %>" alt="<%= team.name %>"></td>
-                <td><%= team.name %></td>
+                <td><a href="/teams/<%= team.name %>"><%= team.name %></a> </td>
                 <td><%= team.country %></td>
                 <td><%= team.collection.length %></td>
                 <td></td>
