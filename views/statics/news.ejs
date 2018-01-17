@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="">
+    <h4>Latest News</h4>
+    <a href="/news/new">Add News Article</a>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Pic</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% newss.forEach((news) =>{ %>
+                <tr>
+                <td><img height="150" width="250"  src="<%= news.image %>" alt=""></td>
+                <td><a href="/news/<%= news.id %>"><%= news.title %></a> </td>
+                <td><%= news.article %></td>
+                <td><a href="/newss/<%= news.name %>/edit">Update</a></td>
+                <td>
+                <form method="POST" action="/newss/<%= news.id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button>Delete</button>
+                </form>
+                </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="">
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
+  </div>

@@ -49,6 +49,7 @@ function newRoute(req, res) {
 }
 
 function createRoute(req, res){
+  // req.body.createdBy = req.user;
   News
     .create(req.body)
     .then((racer) => {

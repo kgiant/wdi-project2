@@ -5,6 +5,7 @@ const newsSchema = new mongoose.Schema({
   subtitle: { type: String },
   article: { type: String, required: true },
   image: { type: String }
+  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
 
 module.exports = mongoose.model('News', newsSchema);

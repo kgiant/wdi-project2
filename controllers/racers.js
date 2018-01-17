@@ -4,16 +4,26 @@ const Racer = require('../models/racer');
 // const Event = require('../models/event');
 // const Results = require('../models/result');
 const Team = require('../models/team');
-// const News = require('../models/news');
+const News = require('../models/news');
 
 //show listing of all racers
 function racersRoute(req, res){
   Racer
     .find(req.query)
+    .sort('fisRank')
     .exec()
     .then((racers) => {
       if(!racers) return res.status(404).end();
-      res.render('statics/racers', {racers});
+      News
+        .find()
+        .exec()
+        .then((newsItems) => {
+          console.log(newsItems);
+          res.render('statics/racers', {racers, newsItems});
+        })
+        .catch(() => {
+          res.status(500).end();
+        });
     })
     .catch(() => {
       res.status(500).end();
@@ -45,8 +55,11 @@ function racerRoute(req, res) {
 
 // create new record
 function createRoute(req, res){
+  // req.body.createdBy = req.user;
+
   Racer
     .create(req.body)
+    .populate('team') // turn team id into team object with full details
     .then((racer) => {
       // req.flash('info', `Thanks for registering, ${racer.username}! Please login to manage team-${racer.country}.` );
       res.redirect('/racers');
@@ -63,7 +76,7 @@ function createRoute(req, res){
 function editRoute(req, res) {
   Racer
     .findOne({name: req.params.name})
-    // .populate('team') // turn team id into team object with full details
+    .populate('team') // turn team id into team object with full details
     .exec()
     .then((racer) => {
       if(!racer) return res.status(404).end();
@@ -110,8 +123,6 @@ function racerDelete(req, res) {
 }
 
 module.exports = {
-  // index: indexRoute,
-  // user: userRoute,
   racers: racersRoute,
   racer: racerRoute,
   new: newRoute,
@@ -119,8 +130,4 @@ module.exports = {
   edit: editRoute,
   update: racerUpdate,
   delete: racerDelete
-  // team: teamRoute,
-  // event: eventRoute,
-  // result: resultRoute,
-  // news: newsRoute,
 };

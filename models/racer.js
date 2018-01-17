@@ -11,6 +11,7 @@ const racerSchema = new mongoose.Schema({
   image: { type: String },
   favoriteSpot: { type: String },
   sponsors: [{type: String}]
+  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
 
 

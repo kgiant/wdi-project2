@@ -42,6 +42,7 @@ function teamRoute(req, res) {
 
 // create new record
 function createRoute(req, res){
+  // req.body.managedBy = req.user;
   Team
     .create(req.body)
     .then((team) => {
