@@ -6,6 +6,8 @@ const newsSchema = new mongoose.Schema({
   article: { type: String, required: true },
   image: { type: String }
   // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('News', newsSchema);

@@ -26,11 +26,11 @@
               <% newss.forEach((news) =>{ %>
                 <tr>
                 <td><img height="150" width="250"  src="<%= news.image %>" alt=""></td>
-                <td><a href="/news/<%= news.id %>"><%= news.title %></a> </td>
+                <td><a href="/news/<%= news.name %>"><%= news.title %></a> </td>
                 <td><%= news.article %></td>
-                <td><a href="/newss/<%= news.name %>/edit">Update</a></td>
+                <td><a href="/news/<%= news.name %>/edit">Update</a></td>
                 <td>
-                <form method="POST" action="/newss/<%= news.id %>">
+                <form method="POST" action="/news/<%= news.id %>">
                 <input type="hidden" name="_method" value="DELETE">
                 <button>Delete</button>
                 </form>

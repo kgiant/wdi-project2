@@ -61,8 +61,14 @@ router.route('/teams/:name/edit')
 router.route('/news')
   .get(news.newss)
   .post(news.create);
-router.route('/news/:name').get(news.news);
-router.route('/news/new').get(news.new);
+router.route('/news/new')
+  .get(news.new);
+router.route('/news/:name')
+  .get(news.news)
+  .put(news.update)
+  .delete(news.delete);
+router.route('/news/:name/edit')
+  .get(news.edit);
 
 router.route('/results').get(result.result);
 
