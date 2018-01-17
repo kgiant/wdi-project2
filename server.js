@@ -6,6 +6,33 @@ const routes         = require('./config/routes');
 const mongoose       = require('mongoose');
 mongoose.Promise     = require('bluebird');
 const methodOverride = require('method-override');
+
+// const $map = $('.map');
+// let map = null;
+// let locations = null;
+
+// initMap();
+//
+// function initMap() {
+//   const latLng = { lat: 51.515213, lng: -0.072331 };
+//   map = new google.maps.Map($map.get(0), {
+//     zoom: 14,
+//     center: latLng
+//     // maptype
+//     // mapstyle
+//   });
+// }
+
+// function addMarker(location){
+//   const latLng = {lat: location.lat, lng: location.lon };
+//
+//   const marker = new google.maps.Marker({
+//     position: latLng,
+//     map: map,
+//     icon: 'images/dot.svg'
+//   });
+// }
+
 // const session = require('express-session');
 // const flash = require('express-flash');
 // const customResponses = require('./lib/customResponses');

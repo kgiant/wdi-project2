@@ -24,6 +24,7 @@ Racer
     country: 'USA',
     category: 'Ladies',
     discipline: ['SL', 'GS'],
+    favoriteSpot: 'Vail, Colorado, USA',
     fisRank: 1,
     image: 'http://www.fis-ski.com/mm/Photo/Photo/General/51/24/5124_G08_W01.jpg',
     sponsors: ['Atomic', 'Salomon']
@@ -32,6 +33,7 @@ Racer
     country: 'Germany',
     category: 'Ladies',
     discipline: ['SL', 'GS'],
+    favoriteSpot: 'Vail, Colorado, USA',
     fisRank: 2,
     image: 'http://www.fis-ski.com/mm/Photo/Photo/General/11/17/78/111778_G08_W01.jpg',
     sponsors: ['Stoeckli', 'Lange']
@@ -40,6 +42,7 @@ Racer
     country: 'Slovakia',
     category: 'Ladies',
     discipline: ['SL', 'GS'],
+    favoriteSpot: 'Les Arcs, Bourg-Saint-Maurice, France',
     fisRank: 3,
     image: 'http://www.fis-ski.com/mm/Photo/Photo/General/10/80/84/108084_G08_W01.jpg',
     sponsors: ['Rossignol', 'Look']
@@ -49,6 +52,7 @@ Racer
     country: 'Switzerland',
     category: 'Ladies',
     discipline: ['SL', 'GS'],
+    favoriteSpot: 'Vail, Colorado, USA',
     fisRank: 4,
     image: 'http://www.fis-ski.com/mm/Photo/Photo/General/10/95/64/109564_G08_W01.jpg',
     sponsors: ['Head']
@@ -58,6 +62,7 @@ Racer
     country: 'Austria',
     category: 'Men',
     discipline: ['SL', 'GS'],
+    favoriteSpot: 'Kitzbuhel, Austria',
     fisRank: 1,
     image: 'http://www.fis-ski.com/mm/Photo/Photo/General/07/52/91/75291_G08_W01.jpg',
     sponsors: ['Atomic', 'Salomon']
@@ -66,6 +71,7 @@ Racer
     country: 'Norway',
     category: 'Men',
     discipline: ['SL', 'GS'],
+    favoriteSpot: 'Adelboden, Switzerland',
     fisRank: 2,
     image: 'http://www.fis-ski.com/mm/Photo/Photo/General/10/95/67/109567_G08_W01.jpg',
     sponsors: ['Atomic', 'Salomon']
@@ -74,6 +80,7 @@ Racer
     country: 'Norway',
     category: 'Men',
     discipline: ['SL', 'GS'],
+    favoriteSpot: 'Vail, Colorado, USA',
     fisRank: 3,
     image: 'http://www.fis-ski.com/mm/Photo/Photo/General/10/95/69/109569_G08_W01.jpg',
     sponsors: ['Atomic', 'Salomon']

@@ -40,8 +40,6 @@ function teamRoute(req, res) {
     });
 }
 
-
-
 // create new record
 function createRoute(req, res){
   Team

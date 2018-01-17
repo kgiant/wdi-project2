@@ -9,7 +9,11 @@ const racerSchema = new mongoose.Schema({
   discipline: [{ type: String }],
   fisRank: { type: Number, required: true },
   image: { type: String },
+  favoriteSpot: { type: String },
   sponsors: [{type: String}]
 });
+
+
+
 
 module.exports = mongoose.model('Racer', racerSchema);
