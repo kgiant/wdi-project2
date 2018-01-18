@@ -4,9 +4,7 @@
 // const Event = require('../models/event');
 // const Results = require('../models/result');
 const Team = require('../models/team');
-// const News = require('../models/news');
-
-
+const News = require('../models/news');
 
 function teamsRoute(req, res){
   Team
@@ -14,7 +12,16 @@ function teamsRoute(req, res){
     .exec()
     .then((teams) => {
       if(!teams) return res.status(404).end();
-      res.render('statics/teams', {teams});
+      News
+        .find()
+        .exec()
+        .then((newsItems) => {
+          console.log(newsItems);
+          res.render('statics/teams', {teams, newsItems});
+        })
+        .catch(() => {
+          res.status(500).end();
+        });
     })
     .catch(() => {
       res.status(500).end();
@@ -30,6 +37,9 @@ function newRoute(req, res) {
 function teamRoute(req, res) {
   Team
     .findOne({name: req.params.name})
+    .populate('racer')
+    .populate('user')
+    .populate('news')
     .exec()
     .then((team) => {
       if(!team) return res.status(404).end();
@@ -46,7 +56,7 @@ function createRoute(req, res){
   Team
     .create(req.body)
     .then((team) => {
-      // req.flash('info', `Thanks for registering, ${team.username}! Please login to manage team-${team.country}.` );
+      req.flash('info', `Thanks for registering, ${team.username}! Please login to manage team-${team.country}.` );
       res.redirect('/teams');
       // res.redirect('/login');
     })
@@ -109,9 +119,6 @@ function teamDelete(req, res) {
 }
 
 module.exports = {
-  // index: indexRoute,
-  // user: userRoute,
-  // racer: racerRoute,
   teams: teamsRoute,
   team: teamRoute,
   new: newRoute,
@@ -119,7 +126,4 @@ module.exports = {
   edit: editRoute,
   update: teamUpdate,
   delete: teamDelete
-  // event: eventRoute,
-  // result: resultRoute,
-  // news: newsRoute,
 };

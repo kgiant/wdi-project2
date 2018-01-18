@@ -6,16 +6,14 @@ const routes         = require('./config/routes');
 const mongoose       = require('mongoose');
 mongoose.Promise     = require('bluebird');
 const methodOverride = require('method-override');
-
-
-
-// const session = require('express-session');
-// const flash = require('express-flash');
+const session        = require('express-session');
+const User           = require('./models/user');
+const flash = require('express-flash');
 // const customResponses = require('./lib/customResponses');
-// const authentication = require('./lib/authentication');
+const authentication = require('./lib/authentication');
 // const errorHandler = require('./lib/errorHandler');
 
-const { port, env, dbURI } = require('./config/environment');
+const { port, env, dbURI, sessionSecret } = require('./config/environment');
 
 const app = express();
 
@@ -28,33 +26,33 @@ app.use(express.static(`${__dirname}/public`));
 if(env === 'development') app.use(morgan('dev'));
 
 
-// app.use(session({
-//   secret: sessionSecret,
-//   resave: false,
-//   saveUninitialized: false
-// }));
+app.use(session({
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: false
+}));
 
-// app.use(flash());
+app.use(flash());
 //app.use(customResponses);
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use((req, res, next) => {
-//   if (!req.session.name) return next();
-//   User
-//     .findById(req.session.name)
-//     .exec()
-//     .then((user) => {
-//       if(!user) {
-//         return req.session.regenerate(() => {
-//           res.redirect('/');
-//         });
-//       }
-//       res.locals.user = user;
-//       res.locals.isLoggedIn = true;
-//
-//       next();
-//     });
-// });
+app.use((req, res, next) => {
+  if (!req.session.name) return next();
+  User
+    .findById(req.session.name)
+    .exec()
+    .then((user) => {
+      if(!user) {
+        return req.session.regenerate(() => {
+          res.redirect('/');
+        });
+      }
+      res.locals.user = user;
+      res.locals.isLoggedIn = true;
+
+      next();
+    });
+});
 
 app.use(methodOverride(function (req) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -64,7 +62,7 @@ app.use(methodOverride(function (req) {
   }
 }));
 
-// app.use(authentication);
+app.use(authentication);
 app.use(routes);
 // app.use(errorHandler);
 

@@ -1,11 +1,4 @@
-// const sessions = require('../models/sessions');
-// const User = require('../models/user');
-// const Racer = require('../models/racer');
 const Event = require('../models/event');
-// const Results = require('../models/result');
-// const Team = require('../models/team');
-// const News = require('../models/news');
-
 
 function eventsRoute(req, res){
   Event
@@ -34,7 +27,6 @@ function eventRoute(req, res) {
     });
 }
 
-// Render the registration form
 function newRoute(req, res) {
   Event
     .find()
@@ -58,14 +50,8 @@ function createRoute(req, res){
 }
 
 module.exports = {
-  // index: indexRoute,
-  // user: userRoute,
-  // racer: racerRoute,
-  // team: teamRoute,
   events: eventsRoute,
   event: eventRoute,
   new: newRoute,
   create: createRoute
-  // result: resultRoute,
-  // news: newsRoute,
 };

@@ -1,11 +1,4 @@
-// const sessions = require('../models/sessions');
-// const User = require('../models/user');
-// const Racer = require('../models/racer');
-// const Event = require('../models/event');
-// const Results = require('../models/result');
-// const Team = require('../models/team');
 const News = require('../models/news');
-
 
 function newssRoute(req, res){
   News
@@ -34,7 +27,6 @@ function newsRoute(req, res) {
     });
 }
 
-
 // Render the registration form
 function newRoute(req, res) {
   News
@@ -59,7 +51,6 @@ function createRoute(req, res){
       res.status(500).end();
     });
 }
-
 
 function editRoute(req, res) {
   News

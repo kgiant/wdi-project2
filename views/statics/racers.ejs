@@ -25,9 +25,7 @@
                 <th scope="col">Photo</th>
                 <th scope="col">Name</th>
                 <th scope="col">Category</th>
-                <th scope="col">Discipline</th>
                 <th scope="col">Country</th>
-                <th scope="col">Sponsors</th>
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
               </tr>
@@ -39,9 +37,7 @@
                 <td><img height="30" width="30"  src="<%= racer.image %>" alt="<%= racer.name %>"></td>
                 <td><a href="/racers/<%= racer.name %>"><%= racer.name %></a> </td>
                 <td><%= racer.category %></td>
-                <td><%= racer.discipline %></td>
                 <td><%= racer.country %></td>
-                <td><%= racer.sponsors %></td>
                 <td><a href="/racers/<%= racer.name %>/edit">Update</a></td>
                 <td>
                 <form method="POST" action="/racers/<%= racer.id %>">
@@ -54,20 +50,13 @@
               </tbody>
             </table>
           </div>
-
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
           </div>
           <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-
           </div>
         </div>
       </div>
-
-
     </div>
-
     <div class="">
       <p></p>
       <div class="col-4">

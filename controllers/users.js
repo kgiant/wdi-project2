@@ -4,7 +4,7 @@ const User = require('../models/user');
 // const Event = require('../models/event');
 // const Results = require('../models/result');
 // const Team = require('../models/team');
-// const News = require('../models/news');
+const News = require('../models/news');
 
 
 
@@ -18,7 +18,16 @@ function usersRoute(req, res){
     .exec()
     .then((users) => {
       if(!users) return res.status(404).end();
-      res.render('statics/users', {users});
+      News
+        .find()
+        .exec()
+        .then((newsItems) => {
+          console.log(newsItems);
+          res.render('statics/users', {users, newsItems});
+        })
+        .catch(() => {
+          res.status(500).end();
+        });
     })
     .catch(() => {
       res.status(500).end();
@@ -53,12 +62,12 @@ function createRoute(req, res){
     .create(req.body)
     .then((user) => {
       // req.flash('info', `Thanks for registering, ${user.username}! Please login to manage team-${user.country}.` );
-      res.redirect('/users');
+      res.redirect('/');
       // res.redirect('/login');
     })
     .catch((err) => {
       if(err.name ==='ValidationError'){
-        return res.status(400).render('user/new', {message: 'Passwords do not match'});
+        return res.status(400).render('user/new', {message: 'Passwords do not match. Please enter your details again.'});
       }
       res.status(500).end();
     });
@@ -114,7 +123,6 @@ function userDelete(req, res) {
 }
 
 module.exports = {
-  // index: indexRoute,
   users: usersRoute,
   user: userRoute,
   new: newRoute,
@@ -123,9 +131,4 @@ module.exports = {
   update: userUpdate,
   delete: userDelete,
   login: loginRoute
-  // racer: racerRoute,
-  // team: teamRoute,
-  // event: eventRoute,
-  // result: resultRoute,
-  // news: newsRoute,
 };

@@ -1,4 +1,8 @@
-
+<% if(locals.message) { %>
+  <div class="alert alert-primary" role="alert">
+    <%= message %>
+  </div>
+<% } %>
 
 <div class="container">
   <h2>Update User Information</h2>

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose    = require('mongoose');
 
 const racerSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -11,7 +11,8 @@ const racerSchema = new mongoose.Schema({
   image: { type: String },
   favoriteSpot: { type: String },
   sponsors: [{type: String}]
-  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  // managedBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  // belongsTo: { type: mongoose.Schema.ObjectId, ref: 'Team', required: true }
 });
 
 

@@ -43,6 +43,7 @@ function racerRoute(req, res) {
   Racer
     .findOne({name: req.params.name})
     .populate('team') // turn team id into team object with full details
+    .populate('news')
     .exec()
     .then((racer) => {
       if(!racer) return res.status(404).end();
@@ -61,9 +62,9 @@ function createRoute(req, res){
     .create(req.body)
     .populate('team') // turn team id into team object with full details
     .then((racer) => {
-      // req.flash('info', `Thanks for registering, ${racer.username}! Please login to manage team-${racer.country}.` );
-      res.redirect('/racers');
-      // res.redirect('/login');
+      req.flash('info', `Thanks for registering, ${racer.username}! Please login to manage team-${racer.country}.` );
+      // res.redirect('/racers');
+      res.redirect('/login');
     })
     .catch((err) => {
       if(err.name ==='ValidationError'){
