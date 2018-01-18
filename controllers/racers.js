@@ -16,6 +16,7 @@ function racersRoute(req, res){
       if(!racers) return res.status(404).end();
       News
         .find()
+        // .findById(req.news.id)
         .exec()
         .then((newsItems) => {
           res.render('statics/racers', {racers, newsItems});
@@ -34,6 +35,7 @@ function newRoute(req, res) {
   User
     .findById(req.user.id)
     .populate('teamManagerOf')
+    .populate('news')
     .exec()
     .then((user) => {
       res.render('racer/new', { teams: user.teamManagerOf });
@@ -45,6 +47,7 @@ function racerRoute(req, res) {
   Racer
     .findOne({name: req.params.name})
     .populate('team') // turn team id into team object with full details
+    .populate('user')
     .populate('news')
     .exec()
     .then((racer) => {
@@ -59,13 +62,25 @@ function racerRoute(req, res) {
 // create new record
 function createRoute(req, res){
   req.body.createdBy = req.user;
-  console.log(req.body);
+  // req.body.createdBy = req.team;
+  // console.log(req.body);
   Racer
     .create(req.body)
     .then((racer) => {
+      User
+        .findById(req.user.id)
+        .then((user) => {
+          user.racerManagerOf.push(racer._id);
+          return racer.save();
+        });
+      // Team
+      //   .findById(req.team.id)
+      //   .then((team) => {
+      //     team.racers.push(racer._id);
+      //     return racer.save();
+      //   });
       console.log(req.body);
       req.flash('info', `You just added ${racer.name} in your team!.` );
-      // res.redirect('/racers');
       res.redirect('/racers');
     })
     .catch((err) => {

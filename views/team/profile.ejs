@@ -8,30 +8,36 @@
       <div class="card" style="width: 18rem;">
         <div class="card-header">
           <h2><%= team.name %></h2>
-          <h4><a href="/teams/<%= team.name %>/edit">Edit Profile</a></h4>
+          <% if(locals.isLoggedIn) { %>
+            <h4><a href="/teams/<%= team.name %>/edit">Edit Profile</a></h4>
+            <form method="POST" action="/teams/<%= team.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Delete Team</button>
+            </form>
+            <% } %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Country: <%= team.country %></li>
+            <li class="list-group-item">Coach: </li>
+            <li class="list-group-item">Account manager: </li>
+          </ul>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Country: <%= team.country %></li>
-          <li class="list-group-item">Coach: </li>
-          <li class="list-group-item">Account manager: <%= user.teamManagerOf %></li>
-        </ul>
       </div>
     </div>
   </div>
-</div>
 
-<%# Second container includes tabs with Racers, Results, Galery  %>
-<div class="container racer-tab">
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Team Racers</a>
-      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Gallery</a>
-      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Results</a>
-    </div>
-  </nav>
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <p>ADD RACER TABLE HERE</p>
+  <%# Second container includes tabs with Racers, Results, Galery  %>
+  <div class="container racer-tab">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Team Racers</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Gallery</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Results</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <p>ADD RACER TABLE HERE</p>
       </div>
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

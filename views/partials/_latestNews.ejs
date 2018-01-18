@@ -1,13 +1,11 @@
-
 <div class="card" style="width: 18rem;">
   <div class="card-header">
-    <h4>Latest News</h4>
+    <h5>Latest News</h5>
   </div>
-  <ul class="list-group list-group-flush">
-<p><%= newsItems[0].title %></p>
-<p><%= newsItems[1].title %></p>
-<p><%= newsItems[2].title %></p>
-<p><%= newsItems[3].title %></p>
-<p><a href="/news/<%= newsItems[0].id %>"><%= newsItems[3].title %></a></p>
+  <ul class="list-group list-group-flush latest-news">
+    <p><a href="/news/<%= newsItems[0].id %>"><%= newsItems[0].title %></a></p>
+    <p><a href="/news/<%= newsItems[1].id %>"><%= newsItems[1].title %></a></p>
+    <p><a href="/news/<%= newsItems[2].id %>"><%= newsItems[2].title %></a></p>
+    <p><a href="/news/<%= newsItems[3].id %>"><%= newsItems[3].title %></a></p>
   </ul>
 </div>

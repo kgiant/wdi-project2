@@ -1,1 +1,27 @@
-// for future use
+<%# First container includes athlete picture and basic information %>
+<div class="container racer-tab">
+  <div class="row">
+    <div class="col-7">
+      <img src="<%= user.image %>" alt="<%= user.name %>">
+    </div>
+    <div class="col-5">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h2><%= user.name %></h2>
+        <% if(locals.isLoggedIn) { %>
+          <h4><a href="/users/<%= user.name %>/edit">Edit Profile</a></h4>
+          <form method="POST" action="/users/<%= user.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+          </form>
+          <% } %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Country: <%= user.country %></li>
+          <li class="list-group-item">Teams: <%= user.teamManagerOf %></li>
+          <li class="list-group-item">Racers: <%= user.racerManagerOf %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

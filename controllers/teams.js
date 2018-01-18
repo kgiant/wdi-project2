@@ -31,8 +31,13 @@ function newRoute(req, res) {
   Team
     .find()
     .exec()
-    .then((team) =>  res.render('team/new', { team }));
+    .then((team) =>  {
+      res.render('team/new', { team });
+    });
 }
+
+// res.render('team/new', { team }));
+// }
 
 function teamRoute(req, res) {
   Team
@@ -64,11 +69,10 @@ function createRoute(req, res){
         });
       req.flash('info', `You have just created ${team.name}! You can now add your team members.` );
       res.redirect('/racer/new');
-      // res.redirect('/login');
     })
     .catch((err) => {
       if(err.name ==='ValidationError'){
-        return res.status(400).render('team/new', {message: 'Passwords do not match'});
+        return res.status(400).render('team/new', {message: 'Ooops, there was a problem. Could you please try again.'});
       }
       res.status(500).end();
     });
@@ -100,8 +104,7 @@ function teamUpdate(req, res) {
       return team.save();
     })
     .then((team) => {
-      res.redirect('/teams');
-      // res.redirect(`/teams/${team.name}`);
+      res.redirect(`/teams/${team.name}`);
     })
     .catch((err) => {
       res.status(500).render('error', { err });

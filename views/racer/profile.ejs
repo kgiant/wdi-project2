@@ -8,7 +8,13 @@
       <div class="card" style="width: 18rem;">
         <div class="card-header">
           <h2><%= racer.name %></h2>
+        <% if(locals.isLoggedIn) { %>
           <h4><a href="/racers/<%= racer.name %>/edit">Edit Profile</a></h4>
+          <form method="POST" action="/racers/<%= racer.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+          </form>
+          <% } %>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">FIS Ranking: <%= racer.fisRank %></li>

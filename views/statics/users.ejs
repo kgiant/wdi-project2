@@ -22,6 +22,7 @@
             <thead class="thead-light">
               <tr>
                 <th scope="col">Access Rights</th>
+                <th scope="col">Photo</th>
                 <th scope="col">Name</th>
                 <th scope="col">Position</th>
                 <th scope="col">Country</th>
@@ -34,16 +35,20 @@
               <% users.forEach((user) =>{ %>
                 <tr>
                 <td><%= user.role %></td>
-                <td><%= user.name %></td>
+                <td><img height="30" width="30"  src="<%= user.image %>" alt=""></td>
+                <td><a href="/users/<%= user.name %>"><%= user.name %></a> </td>
                 <td><%= user.position %></td>
                 <td><%= user.country %></td>
+                <% if(locals.isLoggedIn) { %>
                 <td><%= user.email %></td>
                 <td><a href="/users/<%= user.name %>/edit">Update</a></td>
                 <td>
                 <form method="POST" action="/users/<%= user.id %>">
                 <input type="hidden" name="_method" value="DELETE">
                 <button>Delete</button>
-                </form></td>
+                </form>
+                </td>
+                <% } %>
                 </tr>
                 <% }) %>
             </tbody>
