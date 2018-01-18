@@ -18,7 +18,6 @@ function racersRoute(req, res){
         .find()
         .exec()
         .then((newsItems) => {
-          console.log(newsItems);
           res.render('statics/racers', {racers, newsItems});
         })
         .catch(() => {
@@ -56,15 +55,15 @@ function racerRoute(req, res) {
 
 // create new record
 function createRoute(req, res){
-  // req.body.createdBy = req.user;
-
+  req.body.createdBy = req.user;
+  console.log(req.body);
   Racer
     .create(req.body)
-    .populate('team') // turn team id into team object with full details
     .then((racer) => {
-      req.flash('info', `Thanks for registering, ${racer.username}! Please login to manage team-${racer.country}.` );
+      console.log(req.body);
+      req.flash('info', `You just added ${racer.name} in your team!.` );
       // res.redirect('/racers');
-      res.redirect('/login');
+      res.redirect('/racers');
     })
     .catch((err) => {
       if(err.name ==='ValidationError'){

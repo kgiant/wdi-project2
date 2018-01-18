@@ -1,12 +1,12 @@
-const router   = require('express').Router();
+const router      = require('express').Router();
 // const statics  = require('../controllers/statics');
-const sessions = require('../controllers/sessions');
-const user     = require('../controllers/users');
-const racer    = require('../controllers/racers');
-const event    = require('../controllers/events');
-const result   = require('../controllers/results');
-const team     = require('../controllers/teams');
-const news     = require('../controllers/news');
+const sessions    = require('../controllers/sessions');
+const user        = require('../controllers/users');
+const racer       = require('../controllers/racers');
+const event       = require('../controllers/events');
+const result      = require('../controllers/results');
+const team        = require('../controllers/teams');
+const news        = require('../controllers/news');
 const secureRoute = require('../lib/secureRoute');
 
 // router.route('/')
@@ -23,7 +23,7 @@ router.route('/logout')
 // router.all('*', (req, res) => res.notFound());
 
 router.route('/users')
-  .get(secureRoute, user.users)
+  .get(user.users)   //add secureRoute here
   .post(user.create);
 router.route('/user/new')
   .get(user.new);

@@ -11,8 +11,7 @@ const racerSchema = new mongoose.Schema({
   image: { type: String },
   favoriteSpot: { type: String },
   sponsors: [{type: String}]
-  // managedBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-  // belongsTo: { type: mongoose.Schema.ObjectId, ref: 'Team', required: true }
+  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
 
 

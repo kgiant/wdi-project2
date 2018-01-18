@@ -16,7 +16,6 @@ function teamsRoute(req, res){
         .find()
         .exec()
         .then((newsItems) => {
-          console.log(newsItems);
           res.render('statics/teams', {teams, newsItems});
         })
         .catch(() => {
@@ -52,12 +51,12 @@ function teamRoute(req, res) {
 
 // create new record
 function createRoute(req, res){
-  // req.body.managedBy = req.user;
+  req.body.createdBy = req.user;
   Team
     .create(req.body)
     .then((team) => {
-      req.flash('info', `Thanks for registering, ${team.username}! Please login to manage team-${team.country}.` );
-      res.redirect('/teams');
+      req.flash('info', `You have just created ${team.name}! You can now add your team members.` );
+      res.redirect('/racer/new');
       // res.redirect('/login');
     })
     .catch((err) => {

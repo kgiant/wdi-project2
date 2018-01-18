@@ -3,6 +3,7 @@ const News = require('../models/news');
 function newssRoute(req, res){
   News
     .find(req.query)
+    .populate('team') // turn team id into team object with full details
     .exec()
     .then((newss) => {
       if(!newss) return res.status(404).end();
@@ -36,12 +37,11 @@ function newRoute(req, res) {
 }
 
 function createRoute(req, res){
-  // req.body.createdBy = req.user;
+  req.body.createdBy = req.user;
   News
     .create(req.body)
-    // .populate('team') // turn team id into team object with full details
     .then((news) => {
-      // req.flash('info', `Thanks for registering, ${racer.username}! Please login to manage team-${racer.country}.` );
+      req.flash('info', `Thanks for adding, ${news.title}!.` );
       res.redirect('/news');
     })
     .catch((err) => {

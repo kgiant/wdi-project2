@@ -6,11 +6,14 @@ function sessionsNew(req, res) {
 }
 
 function sessionsCreate(req, res, next) {
+  console.log(req.body);
   User
     .findOne({ email: req.body.email })
     .then((user) => {
+      console.log(user);
       if(!user || !user.validatePassword(req.body.password)) {
         req.flash('danger', 'Unknown email/password combination');
+        // console.log('check3');
         return res.redirect('/login');
       }
 

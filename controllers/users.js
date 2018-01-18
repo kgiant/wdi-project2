@@ -22,7 +22,6 @@ function usersRoute(req, res){
         .find()
         .exec()
         .then((newsItems) => {
-          console.log(newsItems);
           res.render('statics/users', {users, newsItems});
         })
         .catch(() => {
@@ -58,16 +57,22 @@ function newRoute(req, res) {
 
 // create new record
 function createRoute(req, res){
+  console.log('check1');
+  console.log(req.body);
   User
     .create(req.body)
     .then((user) => {
-      // req.flash('info', `Thanks for registering, ${user.username}! Please login to manage team-${user.country}.` );
-      res.redirect('/');
-      // res.redirect('/login');
+      console.log('check2');
+      req.flash('info', `Thanks for registering, ${user.username}! Please login to manage your team.` );
+      // res.redirect('/');
+      console.log('check3');
+      res.redirect('/login');
+      console.log('check4');
     })
     .catch((err) => {
       if(err.name ==='ValidationError'){
-        return res.status(400).render('user/new', {message: 'Passwords do not match. Please enter your details again.'});
+        // return res.badRequest('user/new', err.toString());
+        return res.status(400).render('user/new', {message: 'There was a problem with your entries. Please enter your details again.'});
       }
       res.status(500).end();
     });
