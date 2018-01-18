@@ -8,11 +8,11 @@ const userSchema = new mongoose.Schema({
   country: { type: String },
   position: { type: String },
   role: { type: String },
-  email: { type: String },
-  image: { type: String }
-  // teamManagerOf: { type: mongoose.Schema.ObjectId, ref: 'Team', required: true },
-  // racerManagerOf: { type: mongoose.Schema.ObjectId, ref: 'Racer', required: true },
-  // creatorOf: { type: mongoose.Schema.ObjectId, ref: 'News', required: false }
+  email: { type: String, unique: true },
+  image: { type: String },
+  teamManagerOf: [{ type: mongoose.Schema.ObjectId, ref: 'Team'}],
+  racerManagerOf: [{ type: mongoose.Schema.ObjectId, ref: 'Racer'}],
+  creatorOf: [{ type: mongoose.Schema.ObjectId, ref: 'News'}]
 });
 
 userSchema

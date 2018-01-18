@@ -10,8 +10,8 @@ const racerSchema = new mongoose.Schema({
   fisRank: { type: Number, required: true },
   image: { type: String },
   favoriteSpot: { type: String },
-  sponsors: [{type: String}]
-  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  sponsors: [{type: String}],
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: false }
 });
 
 

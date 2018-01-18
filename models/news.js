@@ -4,8 +4,8 @@ const newsSchema = new mongoose.Schema({
   title: { type: String, required: true },
   subtitle: { type: String },
   article: { type: String, required: true },
-  image: { type: String }
-  // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  image: { type: String },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: false }
   // team: { type: mongoose.Schema.ObjectId, ref: 'Team', required: true }
 }, {
   timestamps: true

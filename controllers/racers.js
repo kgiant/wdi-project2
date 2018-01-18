@@ -1,5 +1,5 @@
 // const sessions = require('../models/sessions');
-// const User = require('../models/user');
+const User = require('../models/user');
 const Racer = require('../models/racer');
 // const Event = require('../models/event');
 // const Results = require('../models/result');
@@ -29,12 +29,15 @@ function racersRoute(req, res){
     });
 }
 
-// show registration form
+// show new racer form
 function newRoute(req, res) {
-  Racer
-    .find()
+  User
+    .findById(req.user.id)
+    .populate('teamManagerOf')
     .exec()
-    .then((racer) =>  res.render('racer/new', { racer }));
+    .then((user) => {
+      res.render('racer/new', { teams: user.teamManagerOf });
+    });
 }
 
 // show indivdual racer profile

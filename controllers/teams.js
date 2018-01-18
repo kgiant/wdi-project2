@@ -1,5 +1,5 @@
 // const sessions = require('../models/sessions');
-// const User = require('../models/user');
+const User = require('../models/user');
 // const Racer = require('../models/racer');
 // const Event = require('../models/event');
 // const Results = require('../models/result');
@@ -33,6 +33,7 @@ function newRoute(req, res) {
     .exec()
     .then((team) =>  res.render('team/new', { team }));
 }
+
 function teamRoute(req, res) {
   Team
     .findOne({name: req.params.name})
@@ -55,6 +56,12 @@ function createRoute(req, res){
   Team
     .create(req.body)
     .then((team) => {
+      User
+        .findById(req.user.id)
+        .then((user) => {
+          user.teamManagerOf.push(team._id);
+          return user.save();
+        });
       req.flash('info', `You have just created ${team.name}! You can now add your team members.` );
       res.redirect('/racer/new');
       // res.redirect('/login');

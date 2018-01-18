@@ -238,25 +238,25 @@ User
     country: 'USA',
     position: 'Manager',
     role: 'User',
-    email: 'rs@os.com'
+    email: '1s@os.com'
   }, {
     name: 'Ralph Schuster',
     country: 'Austria',
     position: 'Coach',
     role: 'User',
-    email: 'rs@os.com'
+    email: '2s@os.com'
   }, {
     name: 'Karl Heinz',
     country: 'Germany',
     position: 'Coach',
     role: 'User',
-    email: 'rs@os.com'
+    email: '3s@os.com'
   }, {
     name: 'Maria Georgievich',
     country: 'Slovakia',
     position: 'Manager',
     role: 'User',
-    email: 'rs@os.com'
+    email: '4s@os.com'
   }])
   .then((users) => {
     console.log(`${users.length} users created!`);
