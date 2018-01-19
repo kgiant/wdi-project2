@@ -16,7 +16,7 @@ and will be managed by Users (Admin, Team Managers).
 ###Project Review
 I had a clear plan set out on day one and managed to stick with it for most of the way.
 ![devplan](https://user-images.githubusercontent.com/9730370/35150222-791f450c-fd11-11e7-8121-ba3240f2f3c7.png)
-The challenge was that I tried to do something more complex than possibly appropriate here, that boosted the complexity of some work and did not allow me to delivered as envisioned. At the end of the day the biggest victim was the UI which hardly changed after the initial setup, beauty and responsiveness going out of the window ... Overall, I am very happy with the learning journey, just wish I had a bit more time for a better access & authentication implementation.
+The challenge was that I tried to do something more complex than possibly appropriate here, that boosted the complexity of some work and did not allow me to delivere as envisioned. At the end of the day the biggest victim was the UI which hardly changed after the initial setup, beauty and responsiveness going out of the window ... Overall, I am very happy with the learning journey, just wish I had a bit more time for a better access & authentication implementation.
 The public access of the project and github repository are at
 [Heroku](https://immense-temple-93342.herokuapp.com/) and [Github](https://github.com/kgiant/wdi-project2) respectivelly.
 
@@ -74,18 +74,18 @@ The following screenshots provide a quick run-through the application. There is 
 ![screen shot 2018-01-19 at 12 46 01 am](https://user-images.githubusercontent.com/9730370/35149655-e69799a2-fd0e-11e7-8092-8e5d37ce13d1.png)
 #####Teams Directory: fully functional with CUD functionality available only to the logged in user. Did not have time to limit UD functionality to own teams only. The news widget draws news from the article dataset. It is a Partials file.
 ![screen shot 2018-01-19 at 12 46 58 am](https://user-images.githubusercontent.com/9730370/35149656-e6b42004-fd0e-11e7-9f87-d9e7e11d6841.png)
-#####Racer Directory similarly functional with CUD functionality available only to the logged in user. The Ladies and Men tabs filter results by gender. Did not have time to limit UD functionality to own racers only. The news widget draws news from the article dataset.
+#####Racer Directory similarly functional with CUD functionality available only to the logged in user. The Ladies and Men tabs filter results by gender. Did not have time to limit UD functionality to own racers only. The news widget draws news from the article dataset. 
 ![screen shot 2018-01-19 at 12 47 33 am](https://user-images.githubusercontent.com/9730370/35149657-e6cef55a-fd0e-11e7-8a07-544246b5141b.png)
-#####Racer profile similarly functional with CUD functionality available only to the logged in user. The tabular container under the picture was intended to host personal results, racer gallery and more info.
+#####Racer profile similarly functional with UD functionality available only to the logged in user. The tabular container under the picture was intended to host personal results, racer gallery and more info. The gallery is functional but not profile specific yet.
 ![screen shot 2018-01-19 at 12 48 27 am](https://user-images.githubusercontent.com/9730370/35149658-e6e9da96-fd0e-11e7-8998-5b56b26646e1.png)
-#####Events directory
+#####Events directory. There is a model in place, data in the seeds file and the respective upload form functional, but no furter work was completed.
 ![screen shot 2018-01-19 at 12 49 14 am](https://user-images.githubusercontent.com/9730370/35149659-e6fec1ea-fd0e-11e7-9b90-67be2295c83d.png)
-#####Results Directory
+#####Results Directory. There is a model in place, data in the seeds file and the respective upload form functional, but no furter work was completed.
 ![screen shot 2018-01-19 at 12 49 31 am](https://user-images.githubusercontent.com/9730370/35149660-e71592b2-fd0e-11e7-8563-a6848ebce74c.png)
-#####News - CRUD functionality
+#####News - There is a model in place and CRUD functionality implemented for the logged in user.
 ![screen shot 2018-01-19 at 12 49 57 am](https://user-images.githubusercontent.com/9730370/35149661-e73cd124-fd0e-11e7-9f10-799fac7c8115.png)
-#####Users Directory: fully functional with CUD functionality available only to the logged in user (team manager)and for own profile only. So, can see other team managers but not UD. Further, the logged in user can see more information about the other users than someone who is not logged in, in this case their emails.
-![screen shot 2018-01-19 at 2 05 14 am](https://user-images.githubusercontent.com/9730370/35149664-e853d558-fd0e-11e7-81d9-e235e07abe09.png)
+#####Users Directory: fully functional with CUD functionality available only to the logged in user (team manager)and for own profile only. So, can see other team managers and public hidden information e.g. emails which are not public, but not UD their profiles. 
+![screen shot 2018-01-19 at 7 33 29 pm](https://user-images.githubusercontent.com/9730370/35168139-c4b48b7e-fd4f-11e7-8203-f8f406d19c73.png)
 #####Sample Form
 ![screen shot 2018-01-19 at 12 56 54 am](https://user-images.githubusercontent.com/9730370/35149663-e8391484-fd0e-11e7-971d-38086e606a8c.png)
 ####API Integration
@@ -101,7 +101,7 @@ In brief, the following where delivered and are included in this repository
 * single user type authentication & sessions
 * flash messages
 * initial setup for google maps
-*
+
 
 ###Things to do next:
 Obviously this list extends to infinity, but my next priorities would be
@@ -110,7 +110,7 @@ Obviously this list extends to infinity, but my next priorities would be
 * complete implementation of super admin. A user-role field is already part of the user model and sets online registers at a default value.
 * UI!!!
 * develop events and results, and use the FIS xml feed to automatically load the latest results
-* 
+
 
 ###Things uploaded but not working:
 The events and results sections were dropped after the first couple of days and even though the basic models and views are in place, not much functionality has been add and 

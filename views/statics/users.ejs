@@ -33,29 +33,31 @@
                 <td><a href="/users/<%= user.name %>"><%= user.name %></a> </td>
                 <td><%= user.position %></td>
                 <td><%= user.country %></td>
-                <% if(locals.isLoggedIn && locals.user.id === user.id) { %>
+                <% if(locals.isLoggedIn) { %>
                   <td><%= user.email %></td>
-                  <td><a href="/users/<%= user.name %>/edit">Update</a></td>
-                  <td>
-                  <form method="POST" action="/users/<%= user.id %>">
-                  <input type="hidden" name="_method" value="DELETE">
-                  <button>Delete</button>
-                  </form>
-                  </td>
-                  <% } %>
-                  <% else {
+                  <% } else { %>
                     <td></td>
-                    <td></td>
-                  <% } %>
-                  </tr>
-                  <% }) %>
-                </tbody>
-              </table>
+                    <% } %>
+                  <% if(locals.isLoggedIn && locals.user.id === user.id) { %>
+                    <td><a href="/users/<%= user.name %>/edit">Update</a></td>
+                    <td><form method="POST" action="/users/<%= user.id %>">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button>Delete</button>
+                    </form>
+                    </td>
+                    <% } else { %>
+                      <td></td>
+                      <td></td>
+                      <% } %>
+                      </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <%- include ../partials/_latestNews %>
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <%- include ../partials/_latestNews %>
-        </div>
-      </div>
-    </div>
