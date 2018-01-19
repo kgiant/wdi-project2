@@ -7,13 +7,7 @@
     <div class="col-8">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Ladies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Men</a>
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All Members</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -39,37 +33,25 @@
                 <td><a href="/users/<%= user.name %>"><%= user.name %></a> </td>
                 <td><%= user.position %></td>
                 <td><%= user.country %></td>
-                <% if(locals.isLoggedIn) { %>
-                <td><%= user.email %></td>
-                <td><a href="/users/<%= user.name %>/edit">Update</a></td>
-                <td>
-                <form method="POST" action="/users/<%= user.id %>">
-                <input type="hidden" name="_method" value="DELETE">
-                <button>Delete</button>
-                </form>
-                </td>
-                <% } %>
-                </tr>
-                <% }) %>
-            </tbody>
-          </table>
+                <% if(locals.isLoggedIn && locals.user.id === user.id) { %>
+                  <td><%= user.email %></td>
+                  <td><a href="/users/<%= user.name %>/edit">Update</a></td>
+                  <td>
+                  <form method="POST" action="/users/<%= user.id %>">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button>Delete</button>
+                  </form>
+                  </td>
+                  <% } %>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-        </div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
+        <div class="col-4">
+          <%- include ../partials/_latestNews %>
         </div>
       </div>
     </div>
-    <div class="col-4">
-      <%- include ../partials/_latestNews %>
-    </div>
-  </div>
-
-  <div class="">
-    <p></p>
-    <p></p>
-    <p></p>
-  </div>
-</div>
